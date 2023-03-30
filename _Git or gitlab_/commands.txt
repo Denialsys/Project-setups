@@ -1,0 +1,141 @@
+**Set this parameters first, these are the credentials used in the gitlab
+git config --global user.name <whatever>
+git config --global user.password <whatever>
+git config --global user.email <whatever>
+
+
+**To view the configuration
+git config --global --list
+git config --local --list
+git config --system --list
+
+**To add the target remote
+git remote add origin https://gitlab.com/<username>/<projectname>.git
+
+
+**To change the target remote
+git remote set-url origin https://gitlab.com/<username>/<projectname>.git
+
+
+**Update your git based from the gitlab project
+git fetch
+
+
+**If currently on the main branch, create a branch
+git branch new_test_branch
+
+** Deleting the branch
+git branch --delete <branch name>
+
+
+**To remove tracking on files that was added on .gitignore
+git rm --cached <directory name>
+
+
+** get the source of the target branch
+git checkout <name of the target branch>
+
+
+**pull the update of other dev on the current branch
+git pull
+
+
+**for commiting the changes and pushing to remote repository
+git add *
+git commit -m "<whatever>"
+git push
+
+**First time push
+git push --set-upstream origin main
+
+
+**switching to branch
+git fetch
+git checkout <branch>
+
+
+** prune the locally recorded remote branches
+git fetch origin --prune
+
+
+**stashing
+git stash
+git stash list
+git stash apply stash@{<index of desired stash>}
+
+
+**ignoring the revisions of a file
+git update-index --skip-worktree <target file to ignore further changes>
+
+
+**merging branches, git checkout first on the host branch then execute the following
+git merge <branch name>
+
+** this will force the merging
+git merge  <branch name> --allow-unrelated-histories
+
+
+***** Initial creation of project *****
+1) Create and initialize first the repository
+2) Clone the repository in the github
+
+OR
+
+See the ff: https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github
+
+OR
+
+1) Create and initialize first the repository
+2) Create and initialize the local directory
+3) Commands on local directory:
+  - git init
+  - git branch -M main
+  - git remote add origin <remote git url>
+  - git pull <remote git url>
+  - git checkout
+
+
+
+** Github initial steps
+…or create a new repository on the command line
+echo "# Python-PlateNumber_extractor" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Denialsys/Python-PlateNumber_extractor.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/Denialsys/Python-PlateNumber_extractor.git
+git branch -M main
+git push -u origin main
+
+
+
+** Github initial steps if the local and remote is not the same
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Denialsys/Python-PlateNumber_extractor.git
+git pull https://github.com/Denialsys/Python-PlateNumber_extractor.git --allow-unrelated-histories
+
+
+
+
+** Removing histories in a repository
+Create Orphan Branch – Create a new orphan branch in git repository. The newly created branch will not show in `git branch` command.
+git checkout --orphan temp_branch 
+
+Add Files to Branch – Now add all files to the newly created branch and commit them using the following commands.
+git add -A 
+git commit -am "the first commit" 
+
+Delete master Branch – Now you can delete the master branch from your git repository.
+git branch -D master 
+
+Rename Current Branch – After deleting the master branch, let’s rename the newly created branch name to master.
+git branch -m master 
+
+Push Changes – You have completed the changes to your local git repository. Finally, push your changes to the remote (Github) repository forcefully.
+git push -f origin master 
